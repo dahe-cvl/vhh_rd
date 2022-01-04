@@ -74,21 +74,21 @@ def get_augmentations():
     return iaa.Sequential(
         [
             # Always crop first
-            iaa.Crop(percent=(0, 0.4), keep_size=True, sample_independently=True), 
+            iaa.Crop(percent=(0, 0.1), keep_size=True, sample_independently=True), 
             iaa.size.Resize((256,256)),
             iaa.Fliplr(0.2), 
 
-            iaa.SomeOf((2, 5),
+            iaa.SomeOf((2, 4),
                 [
                 iaa.Add((-2, 2), per_channel=0.5),
                 iaa.Multiply((0.8, 1.3), per_channel=0.5),
                 iaa.LinearContrast((0.5, 2.0), per_channel=0.5),
-                iaa.Grayscale(alpha=(0.0, 1.0)),
                 iaa.PiecewiseAffine(scale=(0.01, 0.05))
                  ],
             random_order=True),
             iaa.Sometimes(0.7, get_black_bar_augmenter(0.25)),
             iaa.Sometimes(0.5, get_text_augmenter()),
+            iaa.Sometimes(0.8, iaa.Grayscale(alpha=(1.0, 1.0)))
         ],
         random_order=False
     ).augment_image

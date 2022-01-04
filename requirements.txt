@@ -11,3 +11,4 @@ umap-learn
 matplotlib
 imgaug
 wandb
+gdown

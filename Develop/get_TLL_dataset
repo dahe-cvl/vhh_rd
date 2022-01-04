@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Downloads the Totally Looks Like dataset 
+# Source: https://finetuner.jina.ai/get-started/totally-looks-like/
+
+gdown https://drive.google.com/uc?id=1jvkbTr_giSP3Ru8OwGNCg6B4PvVbcO34
+gdown https://drive.google.com/uc?id=1EzBZUb_mh_Dp_FKD0P4XiYYSd0QBH5zW
+
+unzip left.zip
+unzip right.zip
